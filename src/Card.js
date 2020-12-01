@@ -2,7 +2,6 @@ import React from 'react'
 import './Card.css'
 
 const Card = (props) => {
-  console.log(props.posterPath)
   return (
   <section className="card">
     <img src={ props.posterPath } alt="card-img"/>

@@ -11,7 +11,7 @@ class App extends Component {
 
   render() {
     return (
-    <main>
+    <main className="App">
       <h1>Rotten Tomatoes Rip-Off</h1>
       <Movies movies={ this.state.movies } />
     </main>
