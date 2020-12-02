@@ -1,6 +1,6 @@
 import React from 'react'
 import './Movies.css'
-import Card from './Card.js'
+import Card from '../Card/Card.js'
 
 const Movies = (props) => {
   const movieCards = props.movies.map(movie => {
@@ -11,8 +11,9 @@ const Movies = (props) => {
       backdropPath = { movie.backdrop_path }
       title = { movie.title }
       averageRating = { movie.average_rating }
-      releaseDate = { movie.release_date}
+      releaseDate = { movie.release_date }
       key = { movie.id }
+      updateCurrentMovie = { props.updateCurrentMovie }
       />
     )
   })
