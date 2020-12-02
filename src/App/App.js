@@ -16,7 +16,10 @@ class App extends Component {
   updateCurrentMovie = (id) => {
     const clickedMovie = this.state.movies.find(movie => movie.id === id);
     this.setState({currentMovie: clickedMovie})
+  }
 
+  returnToHomePage = () => {
+    this.setState({currentMovie: undefined})
   }
 
   render() {
@@ -24,7 +27,7 @@ class App extends Component {
     <main className="App">
       <h1>Rotten Tomatoes Rip-Off</h1>
       {this.state.currentMovie && 
-        <SingleMovie movie={ this.state.currentMovie }/>
+        <SingleMovie movie={ this.state.currentMovie } returnToHomePage={ this.returnToHomePage }/>
       }
       {!this.state.currentMovie &&
         <Movies movies={ this.state.movies } updateCurrentMovie={ this.updateCurrentMovie } />
