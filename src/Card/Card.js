@@ -3,7 +3,7 @@ import './Card.css'
 
 const Card = (props) => {
   return (
-  <section onClick={() => {props.updateCurrentMovie(props.id)}} className="card">
+  <section onClick={() => {props.updateCurrentMovie(props.id)}} title={ props.title } className="card">
     <img src={ props.posterPath } alt="card-img"/>
     <h2>{ props.title }</h2>
     <p>Average Rating: { props.averageRating }</p>
