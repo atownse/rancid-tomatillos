@@ -34,9 +34,9 @@ class App extends Component {
     return (
     <main className="App">
       <h1>Rotten Tomatoes Rip-Off</h1>
-      {/* {!this.state.movies.length &&
+      {!this.state.movies.length &&
           <h2>…loading movies...</h2>
-      } */}
+      }
       {this.state.currentMovie && 
         <SingleMovie movie={ this.state.currentMovie } returnToHomePage={ this.returnToHomePage }/>
       }

@@ -39,6 +39,4 @@ describe('Movies', () => {
     expect(released2).toBeInTheDocument()
   })
 
-    
-
 })

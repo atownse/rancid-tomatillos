@@ -10,14 +10,14 @@ describe.only('Card', () => {
       posterPath = "absolute garbage"
       backdropPath = "supoosed to be a link"
       title = "Random Movie"
-      averageRating = { 11 }
+      averageRating = { 9 }
       releaseDate =  "The twelfth of never"
       key = { 420 }
       updateCurrentMovie = { jest.fn() }
       />)
 
       const title = screen.getByText("Random Movie")
-      const rating = screen.getByText("Average Rating: 11")
+      const rating = screen.getByText("Average Rating: 90%")
 
       expect(title).toBeInTheDocument()
       expect(rating).toBeInTheDocument()
