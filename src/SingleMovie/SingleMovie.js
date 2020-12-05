@@ -1,15 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
+import './SingleMovie.css'
 
-
-class SingleMovie extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {movie: this.props.movie, home: this.props.returnToHomePage}
-    }
-
-    render() {
-        const movie = this.state.movie;
-        return(
+const SingleMovie = ({movie, returnToHomePage}) => {
+    return(
         <section className="single-movie">
             <h2>{ movie.title }</h2>
             <p>{ movie.tagline }</p>
@@ -19,10 +12,9 @@ class SingleMovie extends Component {
             <p>Genre: { movie.genres.join(', ') }</p>
             <p>Revenue: ${ (movie.revenue / 1000000).toFixed(2) }M</p>
             <p>Runtime: { movie.runtime } mins</p>
-            <button onClick={() => {this.props.returnToHomePage()}}>Back to Home</button>
+            <button onClick={() => {returnToHomePage()}}>Back to Home</button>
         </section>
-        )
-    }
+    )
 }
 
 export default SingleMovie;
