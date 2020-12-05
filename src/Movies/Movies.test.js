@@ -38,4 +38,7 @@ describe('Movies', () => {
     expect(released1).toBeInTheDocument()
     expect(released2).toBeInTheDocument()
   })
+
+    
+
 })

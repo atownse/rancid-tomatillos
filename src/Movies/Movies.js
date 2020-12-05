@@ -2,8 +2,8 @@ import React from 'react'
 import './Movies.css'
 import Card from '../Card/Card.js'
 
-const Movies = (props) => {
-  const movieCards = props.movies.map(movie => {
+const Movies = ({movies, updateCurrentMovie}) => {
+  const movieCards = movies.map(movie => {
     return (
       <Card
       id = { movie.id }
@@ -13,7 +13,7 @@ const Movies = (props) => {
       averageRating = { movie.average_rating }
       releaseDate = { movie.release_date }
       key = { movie.id }
-      updateCurrentMovie = { props.updateCurrentMovie }
+      updateCurrentMovie = { updateCurrentMovie }
       />
     )
   })
