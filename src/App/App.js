@@ -17,14 +17,11 @@ class App extends Component {
   componentDidMount() {
     getAllMovies()
     .then(data => this.setState({movies: data.movies}))
-
-    // .then(movies => console.log(movies))
   }
 
   updateCurrentMovie = (id) => {
     getCurrentMovie(id)
     .then(data => this.setState({currentMovie: data.movie}))
-    // this.setState({currentMovie: clickedMovie})
   }
 
   returnToHomePage = () => {
