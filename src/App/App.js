@@ -1,21 +1,30 @@
 import React, { Component } from 'react'
 import './App.css';
-import movieData from '../temp-data.js'
+// import movieData from '../temp-data.js'
 import Movies from '../Movies/Movies.js'
 import SingleMovie from '../SingleMovie/SingleMovie.js'
+import { getAllMovies, getCurrentMovie } from '../apiCalls.js'
 
 class App extends Component {
   constructor() {
     super()
     this.state = { 
-      movies : movieData.movies,
+      movies : [],
       currentMovie : undefined,
      }
   }
 
+  componentDidMount() {
+    getAllMovies()
+    .then(data => this.setState({movies: data.movies}))
+
+    // .then(movies => console.log(movies))
+  }
+
   updateCurrentMovie = (id) => {
-    const clickedMovie = this.state.movies.find(movie => movie.id === id);
-    this.setState({currentMovie: clickedMovie})
+    getCurrentMovie(id)
+    .then(data => this.setState({currentMovie: data.movie}))
+    // this.setState({currentMovie: clickedMovie})
   }
 
   returnToHomePage = () => {
@@ -26,6 +35,9 @@ class App extends Component {
     return (
     <main className="App">
       <h1>Rotten Tomatoes Rip-Off</h1>
+      {!this.state.movies.length &&
+          <h2>…loading movies...</h2>
+      }
       {this.state.currentMovie && 
         <SingleMovie movie={ this.state.currentMovie } returnToHomePage={ this.returnToHomePage }/>
       }
