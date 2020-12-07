@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './App.css';
-// import movieData from '../temp-data.js'
 import Movies from '../Movies/Movies.js'
 import SingleMovie from '../SingleMovie/SingleMovie.js'
 import { getAllMovies, getCurrentMovie } from '../apiCalls.js'
@@ -11,17 +10,20 @@ class App extends Component {
     this.state = { 
       movies : [],
       currentMovie : undefined,
+      error: ''
      }
   }
 
   componentDidMount() {
     getAllMovies()
     .then(data => this.setState({movies: data.movies}))
+    .catch(error => this.setState({ error: error.message}))
   }
 
   updateCurrentMovie = (id) => {
     getCurrentMovie(id)
     .then(data => this.setState({currentMovie: data.movie}))
+    .catch(error => this.setState({ error: error.message}))
   }
 
   returnToHomePage = () => {
