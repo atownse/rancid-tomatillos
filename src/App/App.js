@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
+import { Route } from 'react-router-dom'
 import './App.css';
 import Movies from '../Movies/Movies.js'
 import SingleMovie from '../SingleMovie/SingleMovie.js'
-import { getAllMovies, getCurrentMovie } from '../apiCalls.js'
 
 class App extends Component {
   constructor() {
@@ -14,18 +14,6 @@ class App extends Component {
      }
   }
 
-  componentDidMount() {
-    getAllMovies()
-    .then(data => this.setState({movies: data.movies}))
-    .catch(error => this.setState({ error: error.message}))
-  }
-
-  updateCurrentMovie = (id) => {
-    getCurrentMovie(id)
-    .then(data => this.setState({currentMovie: data.movie}))
-    .catch(error => this.setState({ error: error.message}))
-  }
-
   returnToHomePage = () => {
     this.setState({currentMovie: undefined})
   }
@@ -34,15 +22,24 @@ class App extends Component {
     return (
     <main className="App">
       <h1>Rotten Tomatoes Rip-Off</h1>
-      {!this.state.movies.length &&
+      {/* {!this.state.movies.length &&
           <h2>…loading movies...</h2>
-      }
-      {this.state.currentMovie && 
-        <SingleMovie movie={ this.state.currentMovie } returnToHomePage={ this.returnToHomePage }/>
-      }
-      {!this.state.currentMovie &&
-        <Movies movies={ this.state.movies } updateCurrentMovie={ this.updateCurrentMovie } />
-      }
+      } */}
+
+      <Route 
+        path="/movies/:id" 
+
+        render={ ({match}) => {
+          const { id } = match.params
+          return <SingleMovie movieID={ id } returnToHomePage={ this.returnToHomePage } />
+        }}
+      />
+
+      <Route exact path="/" render={ () => {
+        return (
+          <Movies movies={ this.state.movies } />
+        )}} 
+      />
     </main>
   )}
 }
