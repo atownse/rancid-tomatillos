@@ -8,14 +8,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = { 
-      movies : [],
-      currentMovie : undefined,
       error: ''
      }
-  }
-
-  returnToHomePage = () => {
-    this.setState({currentMovie: undefined})
   }
 
   render() {
@@ -25,19 +19,16 @@ class App extends Component {
       {/* {!this.state.movies.length &&
           <h2>…loading movies...</h2>
       } */}
-
       <Route 
         path="/movies/:id" 
-
         render={ ({match}) => {
           const { id } = match.params
-          return <SingleMovie movieID={ id } returnToHomePage={ this.returnToHomePage } />
+          return <SingleMovie movieID={ id } />
         }}
       />
-
       <Route exact path="/" render={ () => {
         return (
-          <Movies movies={ this.state.movies } />
+          <Movies  />
         )}} 
       />
     </main>

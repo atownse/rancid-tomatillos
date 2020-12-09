@@ -13,14 +13,12 @@ class SingleMovie extends Component {
     }
 
     componentDidMount() {
-        console.log("single movie has mounted")
         getCurrentMovie(this.props.movieID)
         .then(data => this.setState({ movie: data.movie }))
         .catch(error => this.setState({ error: error.message}))
     }
 
     render() {
-        console.log("Single movie state", this.state, this.props)
         const { movie } = this.state
         return(
             <section className="single-movie">
@@ -34,7 +32,9 @@ class SingleMovie extends Component {
                         <p>Genre: { movie.genres.join(', ') }</p>
                         <p>Revenue: ${ (movie.revenue / 1000000).toFixed(2) }M</p>
                         <p>Runtime: { movie.runtime } mins</p>
-                        <Link to="/">Back to Home</Link>
+                        <Link to="/" >
+                            <button>Back to Home</button>
+                        </Link>
                     </>
                 }
             </section>
