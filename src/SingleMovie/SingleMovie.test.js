@@ -5,8 +5,9 @@ import { render, screen, waitFor, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import { getCurrentMovie, getAllMovies } from '../apiCalls.js'
+import { MemoryRouter, Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
 jest.mock('../apiCalls.js')
-import {MemoryRouter} from 'react-router-dom'
 
 
 describe('SingleMovie', () => {
@@ -41,10 +42,9 @@ describe('SingleMovie', () => {
     it('should render the single movie clicked', async () => {
         render(
           <MemoryRouter>
-              <SingleMovie />
+              <App />
           </MemoryRouter>
         );
-    
         const movieCard =  await waitFor(() => screen.getByText("Money Plane"))
     
         userEvent.click(movieCard)
@@ -52,26 +52,40 @@ describe('SingleMovie', () => {
         const clickedMovie = await waitFor(() => screen.getByText("Fake tagline"))
     
         expect(clickedMovie).toBeInTheDocument()
-
     })
    
-
     it('should be able to return to home page', async () => {
-        render(
-            <MemoryRouter>
-                <App />
-            </MemoryRouter>
-          );
+      const history = createMemoryHistory()
+      history.push('/movies/694919')
+      render(
+        <Router history={history}>
+          <App />
+        </Router>
+      )
 
-        const movieCard =  await waitFor(() => screen.getByText("Money Plane"))
-    
-        userEvent.click(movieCard)
+      const homeLink = await waitFor(() => screen.getByText("Back to Home"))
 
-        const homeLink = await waitFor(() => screen.getByText("Back to Home"))
+      userEvent.click(homeLink)
 
-        userEvent.click(homeLink)
+      expect(screen.queryByText("Fake tagline")).not.toBeInTheDocument()
+    })
 
-        expect(screen.queryByText("Fake tagline")).not.toBeInTheDocument()
+    it('should be able to react to events properly', async () => {
+      render(
+          <MemoryRouter>
+              <App />
+          </MemoryRouter>
+      );
+
+      const movieCard =  await waitFor(() => screen.getByText("Money Plane"))
+  
+      userEvent.click(movieCard)
+
+      const homeLink = await waitFor(() => screen.getByText("Back to Home"))
+
+      userEvent.click(homeLink)
+
+      expect(screen.queryByText("Fake tagline")).not.toBeInTheDocument()
     })
 
 })

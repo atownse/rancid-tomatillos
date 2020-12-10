@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import './App.css';
 import Movies from '../Movies/Movies.js'
 import SingleMovie from '../SingleMovie/SingleMovie.js'
@@ -19,6 +19,7 @@ class App extends Component {
       {/* {!this.state.movies.length &&
           <h2>…loading movies...</h2>
       } */}
+      <Switch>
       <Route 
         path="/movies/:id" 
         render={ ({match}) => {
@@ -31,6 +32,13 @@ class App extends Component {
           <Movies  />
         )}} 
       />
+      <Route render={ () => {
+        return (
+          <h2>This page does not exist</h2>
+        )
+      }}
+      />
+      </Switch>
     </main>
   )}
 }
