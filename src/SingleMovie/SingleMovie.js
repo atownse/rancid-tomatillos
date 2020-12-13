@@ -24,16 +24,16 @@ class SingleMovie extends Component {
             <section className="single-movie">
                 { movie && 
                     <>
-                        <h2>{ movie.title }</h2>
-                        <p>{ movie.tagline }</p>
-                        <img src={ movie.backdrop_path } alt="single-movie"/>
+                        <h2 className="title">{ movie.title }</h2>
+                        <p><em>{ movie.tagline }</em></p>
+                        <img className="single-image" src={ movie.backdrop_path } alt="single-movie"/>
                         <p>{ movie.overview }</p>
                         <p>Average Rating: { (movie.average_rating * 10).toFixed(0) }%</p>
                         <p>Genre: { movie.genres.join(', ') }</p>
                         <p>Revenue: ${ (movie.revenue / 1000000).toFixed(2) }M</p>
                         <p>Runtime: { movie.runtime } mins</p>
                         <Link to="/" >
-                            <button>Back to Home</button>
+                            <button className="button-return">Back to Home</button>
                         </Link>
                     </>
                 }

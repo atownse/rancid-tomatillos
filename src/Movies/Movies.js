@@ -33,8 +33,21 @@ class Movies extends Component {
       )
     })
     return (
-      <section className="movies-container">
-        { movieCards }
+      <section>
+        <section className="search-bar">
+          <div className="tb">
+            <div className="td"><input type="text" placeholder="Search" required></input></div>
+            <div className="td" id="s-cover">
+              <button className="button" type="submit">
+                <div id="s-circle"></div>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </section>
+        <section className="movies-container">
+          { movieCards }
+        </section>
       </section>
     )
   }
