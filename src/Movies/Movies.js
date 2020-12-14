@@ -25,7 +25,7 @@ class Movies extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const inputTitle = this.formatSearchInput()
+    let inputTitle = this.formatSearchInput()
     let filteredMovies = this.state.movies.filter(movie => {
       return movie.title.includes(inputTitle)
     })
@@ -34,6 +34,7 @@ class Movies extends Component {
     } else {
       this.setState({ movies: filteredMovies })
     }
+    this.setState({ searchInput: "" })
   }
 
   componentDidMount() {
@@ -56,19 +57,21 @@ class Movies extends Component {
         />
       )
     })
+
     return (
       <section>
         <section className="search-bar">
           <div className="tb">
             <div className="td"><input type="text" placeholder="Search" value={ this.state.searchInput } onChange={ this.handleChange } required></input></div>
             <div className="td" id="s-cover">
-              <button className="button" type="submit" onClick={ this.handleSubmit }>
+              <button className="button" title="submit" onClick={ this.handleSubmit }>
                 <div id="s-circle"></div>
                 <span></span>
               </button>
             </div>
           </div>
         </section>
+        <h3>Search Results: { this.state.movies.length } Movies</h3>
         <section className="movies-container">
           { movieCards }
         </section>
