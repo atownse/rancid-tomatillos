@@ -1,11 +1,31 @@
-.card {
-  box-sizing: border-box;
-  border: 3px solid black;
-  padding: 10px;
-  text-align: center;
-}
-
-img[alt] {
+.card-image {
   height: 20rem;
   width: auto;
+  margin-top: 30px;
+}
+
+.card {
+  background: white;
+  margin: auto;
+  margin-top: 5%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  text-align: center;
+  height: 500px;
+  width: 300px;
+  border-style: double;
+  border-color: #d3ab04;
+} 
+
+p {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+ .card:hover { 
+  padding: 20px 20px;
+  height: 500px;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
