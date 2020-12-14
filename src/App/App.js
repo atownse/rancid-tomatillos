@@ -26,7 +26,7 @@ class App extends Component {
           return <SingleMovie movieID={ id } />
         }}
       />
-      <Route exact path="/" render={ () => {
+      <Route exact path="/rancid-tomatillos" render={ () => {
         return (
           <Movies  />
         )}} 
