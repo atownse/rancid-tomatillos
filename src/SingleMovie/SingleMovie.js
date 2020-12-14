@@ -32,7 +32,7 @@ class SingleMovie extends Component {
                         <p>Genre: { movie.genres.join(', ') }</p>
                         <p>Revenue: ${ (movie.revenue / 1000000).toFixed(2) }M</p>
                         <p>Runtime: { movie.runtime } mins</p>
-                        <Link to="/" >
+                        <Link to="/rancid-tomatillos" >
                             <button className="button-return">Back to Home</button>
                         </Link>
                     </>
