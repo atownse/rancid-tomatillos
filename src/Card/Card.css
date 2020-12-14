@@ -1,6 +1,7 @@
 .card-image {
   height: 20rem;
   width: auto;
+  margin-top: 30px;
 }
 
 .card {
@@ -12,6 +13,8 @@
   text-align: center;
   height: 500px;
   width: 300px;
+  border-style: double;
+  border-color: #d3ab04;
 } 
 
 p {

@@ -1,9 +1,10 @@
 h1 {
-  font-family: 'Luckiest Guy', cursive;
+  font-family: 'Bebas Neue', cursive;
   text-align: center;
   background-image: url(http://static3.depositphotos.com/1000975/163/i/950/depositphotos_1635673-stock-photo-close-up-of-background-popcorn.jpg);
   padding: 60px;
   margin: 0;
   font-size: 50px;
   color: #f60432;
+  letter-spacing: .08em;
 }
