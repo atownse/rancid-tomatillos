@@ -8,13 +8,14 @@ class Movies extends Component {
     super()
     this.state = {
       movies: [],
+      movieResults: [],
       searchInput: "",
       error: null
     }
   }
 
   handleChange = (event) => {
-    this.setState({ searchInput: event.target.value })
+    this.setState({ searchInput: event.target.value, moviesResults: this.state.movies })
   }
 
   formatSearchInput = () => {
@@ -32,9 +33,13 @@ class Movies extends Component {
     if (!filteredMovies.length) {
       alert("No results match this search")
     } else {
-      this.setState({ movies: filteredMovies })
+      this.setState({ movieResults: filteredMovies })
     }
     this.setState({ searchInput: "" })
+  }
+
+  resetSearch = (event) => {
+    this.setState({ movieResults: this.state.movies })
   }
 
   componentDidMount() {
@@ -43,8 +48,8 @@ class Movies extends Component {
     .catch(error => this.setState({ error: error.message}))
   }
 
-  render() {
-    const movieCards = this.state.movies.map(movie => {
+  createMovieCards(array) {
+    let movieCards = array.map(movie => {
       return (
         <Card
         id = { movie.id }
@@ -57,12 +62,24 @@ class Movies extends Component {
         />
       )
     })
+    return movieCards
+  }
 
+  render() {
+    let movieCards;
+    if (!this.state.movieResults.length) {
+      movieCards = this.createMovieCards(this.state.movies)
+    } else {
+      movieCards = this.createMovieCards(this.state.movieResults)
+    }
+    
     return (
       <section>
         <section className="search-bar">
           <div className="tb">
-            <div className="td"><input type="text" placeholder="Search" value={ this.state.searchInput } onChange={ this.handleChange } required></input></div>
+            <div className="td">
+              <input type="text" placeholder="Search" value={ this.state.searchInput } onChange={ this.handleChange } required></input>
+            </div>
             <div className="td" id="s-cover">
               <button className="button" title="submit" onClick={ this.handleSubmit }>
                 <div id="s-circle"></div>
@@ -71,7 +88,10 @@ class Movies extends Component {
             </div>
           </div>
         </section>
-        <h3>Search Results: { this.state.movies.length } Movies</h3>
+        <section className="search-details">
+            <button className="clear-button" onClick={this.resetSearch}>Clear Search</button>
+            <h3>Search Results: { this.state.movieResults.length ? this.state.movieResults.length : this.state.movies.length } Movies</h3>
+        </section>
         <section className="movies-container">
           { movieCards }
         </section>

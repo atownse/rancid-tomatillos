@@ -1,7 +1,6 @@
 import React from 'react'
 import App from '../App/App'
-import SingleMovie from './SingleMovie.js'
-import { render, screen, waitFor, fireEvent } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import { getCurrentMovie, getAllMovies } from '../apiCalls.js'

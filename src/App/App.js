@@ -18,9 +18,6 @@ class App extends Component {
       <link rel="preconnect" href="https://fonts.gstatic.com"></link>
       <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"></link>
       <h1>Rancid Tomatillos</h1>
-      {/* {!this.state.movies.length &&
-          <h2>…loading movies...</h2>
-      } */}
       <Switch>
       <Route 
         path="/movies/:id" 
