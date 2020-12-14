@@ -17,14 +17,12 @@ section {
     transform: scale(0.6);
 }
 
-.tb
-{
+.tb {
     display: table;
     width: 100%;
 }
 
-.td
-{
+.td {
     display: table-cell;
     vertical-align: middle;
 }
@@ -39,8 +37,7 @@ input, .button {
     background-color: #f60c32;
 }
 
-#cover
-{
+#cover {
     position: absolute;
     top: 50%;
     left: 0;
@@ -54,26 +51,22 @@ input, .button {
     transform: scale(0.6);
 }
 
-form
-{
+form {
     height: 96px;
 }
 
-input[type="text"]
-{
+input[type="text"] {
     width: 100%;
     height: 96px;
     font-size: 60px;
     line-height: 1;
 }
 
-input[type="text"]::placeholder
-{
+input[type="text"]::placeholder {
     color: #e16868;
 }
 
-#s-cover
-{
+#s-cover {
     width: 1px;
 }
 
@@ -85,8 +78,7 @@ input[type="text"]::placeholder
     cursor: pointer;
 }
 
-#s-circle
-{
+#s-circle {
     position: relative;
     top: -8px;
     left: 0;
@@ -153,9 +145,9 @@ input[type="text"]::placeholder
     transform: rotateZ(-52deg);
 }
 #s-cover:hover button span:before, #s-cover:hover button span:after {
-    right: -6px;
-    width: 40px;
-    background-color: #fff;
+  right: -6px;
+width: 40px;
+background-color: #fff;
 }
 
 #ytd-url {
@@ -173,4 +165,9 @@ input[type="text"]::placeholder
   border-radius: 4px;
   box-shadow: 0 10px 20px -5px rgba(255, 117, 117, 0.86);
   z-index: 125;
+}
+
+h3 {
+  text-align: center;
+  color: #fff;
 }

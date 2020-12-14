@@ -39,7 +39,7 @@ describe('App', () => {
         <App />
       </MemoryRouter>
     )
-    const message = screen.getByText("Rotten Tomatoes Rip-Off");
+    const message = screen.getByText("Rancid Tomatillos");
     const movieCard = await waitFor(() => screen.getByText("Money Plane"))
 
     expect(message).toBeInTheDocument()

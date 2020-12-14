@@ -8,8 +8,33 @@ class Movies extends Component {
     super()
     this.state = {
       movies: [],
+      searchInput: "",
       error: null
     }
+  }
+
+  handleChange = (event) => {
+    this.setState({ searchInput: event.target.value })
+  }
+
+  formatSearchInput = () => {
+    let lowerCaseInput = this.state.searchInput.toLowerCase()
+    let formattedInput = lowerCaseInput.charAt(0).toUpperCase() + lowerCaseInput.slice(1)
+    return formattedInput
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    let inputTitle = this.formatSearchInput()
+    let filteredMovies = this.state.movies.filter(movie => {
+      return movie.title.includes(inputTitle)
+    })
+    if (!filteredMovies.length) {
+      alert("No results match this search")
+    } else {
+      this.setState({ movies: filteredMovies })
+    }
+    this.setState({ searchInput: "" })
   }
 
   componentDidMount() {
@@ -32,19 +57,21 @@ class Movies extends Component {
         />
       )
     })
+
     return (
       <section>
         <section className="search-bar">
           <div className="tb">
-            <div className="td"><input type="text" placeholder="Search" required></input></div>
+            <div className="td"><input type="text" placeholder="Search" value={ this.state.searchInput } onChange={ this.handleChange } required></input></div>
             <div className="td" id="s-cover">
-              <button className="button" type="submit">
+              <button className="button" title="submit" onClick={ this.handleSubmit }>
                 <div id="s-circle"></div>
                 <span></span>
               </button>
             </div>
           </div>
         </section>
+        <h3>Search Results: { this.state.movies.length } Movies</h3>
         <section className="movies-container">
           { movieCards }
         </section>
